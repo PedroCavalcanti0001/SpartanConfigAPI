@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SpartanConfigAPI">
+    <output-path>$PROJECT_DIR$/../SpartanConfigAP/out/artifacts/SpartanConfigAPI</output-path>
+    <root id="archive" name="SpartanConfigAPI.jar">
+      <element id="module-output" name="SpartanConfigAPI" />
+    </root>
+  </artifact>
+</component>
