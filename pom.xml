@@ -7,7 +7,9 @@
     <groupId>me.zkingofkill.spartanconfigapi</groupId>
     <artifactId>SpartanConfigAPI</artifactId>
     <version>1.1.0-SNAPSHOT</version>
-
+    <properties>
+        <github.global.server>github</github.global.server>
+    </properties>
     <repositories>
         <repository>
             <id>spigotmc-repo</id>
@@ -18,6 +20,34 @@
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
     </repositories>
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Creating site for ${project.version}</message>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
