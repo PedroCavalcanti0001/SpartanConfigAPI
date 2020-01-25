@@ -58,7 +58,7 @@ public abstract class ConfigBuilder {
         fileConfiguration = YamlConfiguration.loadConfiguration(file);
     }
 
-    private List<Field> getFieldList(Class clazz) {
+    public List<Field> getFieldList(Class clazz) {
         List<Field> fields = new ArrayList(Arrays.asList(clazz.getDeclaredFields()));
         fields.addAll(Arrays.asList(clazz.getSuperclass().getDeclaredFields()));
         return fields;
@@ -118,21 +118,5 @@ public abstract class ConfigBuilder {
                 }
             }
         }
-    }
-
-    public void addVariable(List<String> list, String var, Object replacement) {
-        list.stream().map(o -> o.contains(var) ? o.replace(var, replacement.toString()) : o).collect(Collectors.toList());
-    }
-
-    public void sendAll(List<String> msg) {
-        Bukkit.getOnlinePlayers().forEach(player -> msg.forEach(m -> player.sendMessage(m)));
-    }
-
-    public void send(CommandSender sd, List<String> msg) {
-        msg.forEach(sd::sendMessage);
-    }
-
-    public void sendAll(String msg) {
-        Bukkit.getOnlinePlayers().forEach(player -> player.sendMessage(msg));
     }
 }
